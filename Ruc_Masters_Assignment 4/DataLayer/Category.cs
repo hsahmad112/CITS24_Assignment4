@@ -11,11 +11,15 @@ namespace CITS_asgmt_4.DataLayer
         [Column("categoryid", TypeName = "int4")]
         [Key]
         public int Id { get; set; }
+        [Required]
         [Column("categoryname", TypeName = "varchar")]
         [MaxLength(15)]
         public string? Name { get; set; }
         [Column("description", TypeName = "varchar")]
         [MaxLength(300)]
         public string? Description { get; set; }
+
+        public virtual ICollection<Product> Products { get;  set; }
+        
     }
 }

@@ -15,6 +15,9 @@ namespace CITS_asgmt_4.DataLayer
             optionsBuilder.UseNpgsql("host = localhost; db=nw; uid=postgres; pwd=postgres");
         }
 
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+           
+        }
     }
 }

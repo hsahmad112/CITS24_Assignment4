@@ -12,7 +12,8 @@ namespace CITS_asgmt_4.DataLayer
             return db.Categories.ToList();
         }
 
-        public Category GetCategory(int id) {
+        public Category GetCategory(int id)
+        {
             var db = new NorthwindContext();
             Category category = db.Categories.ToList().Find(x => x.Id == id);
             return category;
@@ -32,16 +33,16 @@ namespace CITS_asgmt_4.DataLayer
 
             try
             {
-                
+
                 db.Categories.Add(category);
                 db.SaveChanges();
                 result = true;
                 return category;
             }
-            catch 
+            catch
             {
                 result = false;
-                
+
             }
             return category;
 
@@ -61,13 +62,48 @@ namespace CITS_asgmt_4.DataLayer
                 result = true;
                 return result;
             }
-            catch 
-            { 
-                result = false; 
+            catch
+            {
+                result = false;
             }
             return result;
         }
-    }
 
-    
+        public bool UpdateCategory(int id, string name, string description)
+        {
+            var db = new NorthwindContext();
+            bool result;
+            Category category = db.Categories.ToList().Find(x => x.Id == id);
+            try
+            {
+                category.Name = name;
+                category.Description =  description;
+                db.SaveChanges();
+                result = true;
+
+            }
+            catch
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        public List<Product> GetProducts()
+        {
+            var db = new NorthwindContext();
+            var product = db.Products.ToList();
+            return product;
+        }
+
+        public Product GetProduct(int id)
+        {
+            var db = new NorthwindContext();
+           
+
+            var query = db.Products.Include(x => x.Category).ToList().Find(x => x.Id == id);
+            return query;
+        }  
+
+    }
 }

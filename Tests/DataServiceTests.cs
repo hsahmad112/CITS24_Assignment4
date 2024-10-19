@@ -58,7 +58,7 @@ public class DataServiceTests
         Assert.Null(category);
     }
 
-#if false
+
     [Fact]
     public void DeleteCategory_InvalidId_ReturnsFalse()
     {
@@ -113,7 +113,7 @@ public class DataServiceTests
         var service = new DataService();
         var product = service.GetProduct(1);
         Assert.Equal("Chai", product.Name);
-        Assert.Equal("Beverages", product.CategoryName);
+        Assert.Equal("Beverages", product.Category.Name);
     }
 
 
@@ -127,6 +127,7 @@ public class DataServiceTests
         Assert.Equal("Beverages", products.First().CategoryName);
         Assert.Equal("Lakkalikööri", products.Last().Name);
     }
+#if false
 
     [Fact]
     public void GetProduct_NameSubString_ReturnsProductsThatMatchesTheSubString()

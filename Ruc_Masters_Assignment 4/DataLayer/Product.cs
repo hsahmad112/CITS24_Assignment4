@@ -13,11 +13,19 @@ namespace CITS_asgmt_4.DataLayer
         [Column("productname", TypeName = "varchar")]
         [MaxLength(40)]
         public string? Name { get; set; }
-        [Column("unitprice", TypeName = "varchar")]
-        public string? UnitPrice { get; set; }
-        [Column("quantityperunit", TypeName = "int4")]
-        public int QuantityPerUnit { get; set; }
+        [Column("unitprice", TypeName = "int4")]
+        public double UnitPrice { get; set; }
+        [Column("quantityperunit", TypeName = "varchar")]
+        public string QuantityPerUnit { get; set; }
         [Column("unitsinstock", TypeName = "int4")]
-        public int  UnitInStock { get; set; }
+        public int UnitsInStock { get; set; }
+
+        public virtual Category Category { get; set; }
+
+        [ForeignKey("Category")]
+        [Column("categoryid", TypeName = "int4")]
+        public int CategoryId { get; set; }
+        [Column("categoryname", TypeName = "varchar")]
+        public string CategoryName => Category.Name;
     }
 }
