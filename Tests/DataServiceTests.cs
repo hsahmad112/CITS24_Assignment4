@@ -24,7 +24,7 @@ public class DataServiceTests
         Assert.Equal(8, categories.Count);
         Assert.Equal("Beverages", categories.First().Name);
     }
-#if false
+
     [Fact]
     public void GetCategory_ValidId_ReturnsCategoryObject()
     {
@@ -47,7 +47,6 @@ public class DataServiceTests
     }
 
 
-
     [Fact]
     public void DeleteCategory_ValidId_RemoveTheCategory()
     {
@@ -59,6 +58,7 @@ public class DataServiceTests
         Assert.Null(category);
     }
 
+#if false
     [Fact]
     public void DeleteCategory_InvalidId_ReturnsFalse()
     {
