@@ -11,5 +11,6 @@ namespace CITS_asgmt_4.DataLayer
 
             return db.Categories.ToList();
         }
+
     }
 }

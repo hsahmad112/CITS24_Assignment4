@@ -4,16 +4,16 @@ using System.Runtime.CompilerServices;
 
 namespace CITS_asgmt_4.DataLayer
 {
+    [Table("products", Schema = "public")]
     public class Product
     {
         [Key]
         [Column("productid", TypeName = "int4")]
-        
-        public int Id { get; }
+        public int Id { get; set; }
         [Column("productname", TypeName = "varchar")]
         [MaxLength(40)]
         public string? Name { get; set; }
-        [Column("unitprice", TypeName = "int4")]
+        [Column("unitprice", TypeName = "varchar")]
         public string? UnitPrice { get; set; }
         [Column("quantityperunit", TypeName = "int4")]
         public int QuantityPerUnit { get; set; }

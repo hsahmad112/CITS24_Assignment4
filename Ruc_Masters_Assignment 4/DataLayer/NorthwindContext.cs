@@ -12,7 +12,7 @@ namespace CITS_asgmt_4.DataLayer
         {
             optionsBuilder.EnableSensitiveDataLogging(); //for debug in dev mode;
             optionsBuilder.LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information);
-            optionsBuilder.UseNpgsql("host = localhost;db=nw;uid=postgres;pwd=1234");
+            optionsBuilder.UseNpgsql("host = localhost; db=nw; uid=postgres; pwd=postgres");
         }
 
 

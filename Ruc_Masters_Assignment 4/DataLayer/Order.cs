@@ -3,11 +3,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CITS_asgmt_4.DataLayer
 {
+    [Table("orders", Schema = "public")]
     public class Order
     {
         [Key]
         [Column("orderid", TypeName = "int4")]
-        public int Id { get; }
+        public int Id { get; set; }
         [Column("orderdate", TypeName = "date")]
         public DateTime OrderdDate { get; set; } //changed name to reflect purpose
         [Column("requireddate", TypeName = "date")]

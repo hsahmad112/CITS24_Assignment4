@@ -1,6 +1,3 @@
-using System.Security.Cryptography;
-using CITS_asgmt_4.DataLayer;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

@@ -15,7 +15,7 @@ public class DataServiceTests
         Assert.Null(category.Name);
         Assert.Null(category.Description);
     }
-#if false
+
     [Fact]
     public void GetAllCategories_NoArgument_ReturnsAllCategories()
     {
@@ -24,7 +24,7 @@ public class DataServiceTests
         Assert.Equal(8, categories.Count);
         Assert.Equal("Beverages", categories.First().Name);
     }
-
+#if false
     [Fact]
     public void GetCategory_ValidId_ReturnsCategoryObject()
     {
