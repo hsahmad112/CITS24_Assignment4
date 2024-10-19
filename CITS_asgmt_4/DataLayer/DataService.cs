@@ -2,5 +2,11 @@
 {
     public class DataService
     {
+
+        public List<Category> GetCategories()
+        {
+            var db = new NorthwindContext();
+            return db.Categories.ToList();
+        }
     }
 }

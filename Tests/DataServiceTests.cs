@@ -1,9 +1,9 @@
 namespace Assignment4.Tests;
-using Ruc_Masters_Assignment_4;
+using CITS_asgmt_4.DataLayer;
 
 public class DataServiceTests
 {
-    #if false
+
     /* Categories */
 
 
@@ -15,7 +15,7 @@ public class DataServiceTests
         Assert.Null(category.Name);
         Assert.Null(category.Description);
     }
-
+#if false
     [Fact]
     public void GetAllCategories_NoArgument_ReturnsAllCategories()
     {
@@ -209,5 +209,5 @@ public class DataServiceTests
         Assert.Equal(12, orderDetails.First().Quantity);
     }
 
-#endif 
+#endif
 }
