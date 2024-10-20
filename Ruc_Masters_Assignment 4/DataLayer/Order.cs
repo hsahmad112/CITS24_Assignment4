@@ -10,11 +10,11 @@ namespace CITS_asgmt_4.DataLayer
         [Column("orderid", TypeName = "int4")]
         public int Id { get; set; }
         [Column("orderdate", TypeName = "date")]
-        public DateTime OrderdDate { get; set; } //changed name to reflect purpose
+        public DateTime Date { get; set; } 
         [Column("requireddate", TypeName = "date")]
-        public DateTime RequiredDate { get; set; }
+        public DateTime Required { get; set; }
         [Column("shippeddate", TypeName = "date")]
-        public DateTime ShippedDate { get; set; } //changed name to reflect purpose
+        public DateTime? ShippedDate { get; set; } 
         [Column("freight", TypeName = "int4")]
         public int Freight { get; set; }
         [Column("shipname", TypeName = "varchar")]
@@ -23,5 +23,8 @@ namespace CITS_asgmt_4.DataLayer
         [Column("shipcity", TypeName = "varchar")]
         [MaxLength(15)]
         public string? ShipCity { get; set; }
+
+        public virtual ICollection<OrderDetails> OrderDetails { get; set; }
+
     }
 }

@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Collections.Frozen;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
 
 namespace CITS_asgmt_4.DataLayer
@@ -99,11 +102,49 @@ namespace CITS_asgmt_4.DataLayer
         public Product GetProduct(int id)
         {
             var db = new NorthwindContext();
-           
 
-            var query = db.Products.Include(x => x.Category).ToList().Find(x => x.Id == id);
+
+            var product = db.Products.Include(x => x.Category).ToList().Find(x => x.Id == id);
+            return product;
+        }
+
+        public List<Product> GetProductByCategory(int id)
+        {
+            var db = new NorthwindContext();
+            var query = db.Products.Include(x => x.Category).ToList().FindAll(x => x.CategoryId == id);
             return query;
-        }  
+        }
+        
+        public List<Product> GetProductByName(string name)
+        {
+            var db = new NorthwindContext();
+            var q = db.Products.Include(x => x.Category).ToList().FindAll(x => x.ProductName.Contains(name));
+            return q;
+        }
 
+        public Order GetOrder(int id)
+        {
+            var db = new NorthwindContext();
+            var q = db.Orders.Include(x => x.OrderDetails).ThenInclude(x => x.Product).ThenInclude( x => x.Category).ToList().Find(x => x.Id == id);
+            
+            return q;
+        }
+        public List<Order> GetOrders()
+        {
+            var db = new NorthwindContext();
+            return db.Orders.ToList();
+
+        }
+        public List<OrderDetails> GetOrderDetailsByOrderId(int id)
+        {
+            var db = new NorthwindContext();
+            return db.OrderDetails.Include(x => x.Product).ToList().FindAll(x => x.OrderId == id);
+        }
+
+        public List<OrderDetails> GetOrderDetailsByProductId(int id)
+        {
+            var db = new NorthwindContext();
+            return db.OrderDetails.Include(x => x.Order).Include(x => x.Product).ThenInclude(x => x.Category).OrderBy(x => x.OrderId).ToList().FindAll(x => x.ProductId == id);
+        }
     }
 }

@@ -27,5 +27,9 @@ namespace CITS_asgmt_4.DataLayer
         public int CategoryId { get; set; }
         [Column("categoryname", TypeName = "varchar")]
         public string CategoryName => Category.Name;
+        public string ProductName => Name;
+
+        public virtual ICollection<OrderDetails> OrderDetail { get; set; }
+
     }
 }

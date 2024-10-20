@@ -127,7 +127,6 @@ public class DataServiceTests
         Assert.Equal("Beverages", products.First().CategoryName);
         Assert.Equal("Lakkalikööri", products.Last().Name);
     }
-#if false
 
     [Fact]
     public void GetProduct_NameSubString_ReturnsProductsThatMatchesTheSubString()
@@ -139,7 +138,6 @@ public class DataServiceTests
         Assert.Equal("Confections", products.First().CategoryName);
         Assert.Equal("Flotemysost", products.Last().ProductName);
     }
-
     /* orders */
     [Fact]
     public void Order_Object_HasIdDatesAndOrderDetails()
@@ -152,7 +150,6 @@ public class DataServiceTests
         Assert.Null(order.ShipName);
         Assert.Null(order.ShipCity);
     }
-
     [Fact]
     public void GetOrder_ValidId_ReturnsCompleteOrder()
     {
@@ -162,6 +159,8 @@ public class DataServiceTests
         Assert.Equal("Queso Cabrales", order.OrderDetails?.First().Product?.Name);
         Assert.Equal("Dairy Products", order.OrderDetails?.First().Product?.Category?.Name);
     }
+
+
 
     [Fact]
     public void GetOrders()
@@ -197,7 +196,6 @@ public class DataServiceTests
         Assert.Equal(12, orderDetails.First().Quantity);
     }
 
-
     [Fact]
     public void GetOrderDetailByProductId_ValidId_ReturnsOrderDateUnitPriceAndQuantity()
     {
@@ -210,5 +208,4 @@ public class DataServiceTests
         Assert.Equal(12, orderDetails.First().Quantity);
     }
 
-#endif
 }
